@@ -1,6 +1,7 @@
 node_modules/
+dist/
+.astro/
 npm-debug.log*
-package-lock.json
 
 .DS_Store
 Thumbs.db

@@ -1,0 +1,108 @@
+---
+import { faqs } from '../data/faq';
+import Proyectos from './Proyectos.astro';
+---
+
+<section id="proceso" class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl text-center font-bold mb-4 text-black">Un proceso claro y sencillo</h2>
+    <p class="text-[#3B434E] text-center max-w-2xl mx-auto mb-12">Desde la primera conversación hasta el lanzamiento. Simple, rápido y sin sorpresas.</p>
+    <div class="grid md:grid-cols-4 gap-6 items-stretch">
+      {[
+        ['1', 'Consulta gratuita', 'Conozco tu negocio y objetivos. Sin presiones ni costos iniciales.'],
+        ['2', 'Propuesta y Estrategia', 'Propuesta detallada con plazos, presupuesto cerrado y estructura.'],
+        ['3', 'Diseño y desarrollo', 'Construyo paso a paso con revisiones constantes.'],
+        ['4', 'Lanzamiento y soporte', 'Pagás el saldo final y publicamos con soporte inicial.'],
+      ].map(([n, t, d]) => (
+        <div class="bg-white border border-gray-200 p-6 rounded-[2rem] flex flex-col h-full text-center">
+          <div class="text-4xl font-bold text-black mb-2">{n}</div>
+          <h3 class="font-semibold text-black text-lg">{t}</h3>
+          <p class="text-sm text-gray-600 mt-2 flex-grow">{d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="text-xl font-semibold text-black uppercase tracking-wide">Leonardo Bringas</h2>
+      <p class="text-black mb-4 mt-4">Soy desarrollador web independiente. Diseño desde cero, sin plantillas, priorizando velocidad y conversión.</p>
+      <div class="flex flex-wrap gap-6 mt-6">
+        <div><span class="text-2xl font-bold text-black">7+</span><p class="text-sm text-gray-600">proyectos entregados</p></div>
+        <div><span class="text-2xl font-bold text-black">100%</span><p class="text-sm text-gray-600">clientes recomiendan</p></div>
+      </div>
+      <a href="#contacto" class="pressable inline-block mt-8 px-6 py-3 bg-black text-white font-semibold rounded-[2rem]">Quiero una página web</a>
+    </div>
+    <div class="flex justify-center">
+      <img src="/yo.webp" alt="Leonardo Bringas, desarrollador web" class="w-56 h-56 object-cover rounded-full shadow-lg" loading="lazy" width="224" height="224" />
+    </div>
+  </div>
+</section>
+
+<Proyectos />
+
+<section id="contacto" class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="text-3xl text-center font-bold mb-4 text-black">Hablemos de tu proyecto</h2>
+  <p class="text-[#3B434E] text-center max-w-2xl mx-auto mb-12">Contame qué necesitas y te respondo en menos de 24 horas.</p>
+  <div class="grid md:grid-cols-5 gap-8 items-start">
+    <div class="md:col-span-2 space-y-8">
+      <ul class="space-y-4">
+        <li><p class="text-sm text-gray-500">Email</p><a href="mailto:leonardobringashello@gmail.com" class="text-black font-medium break-all">leonardobringashello@gmail.com</a></li>
+        <li><p class="text-sm text-gray-500">WhatsApp</p><a href="https://wa.me/5491125417299" target="_blank" rel="noopener noreferrer" data-event="wa_click" data-place="contacto" class="text-black font-medium">+54 9 11 2541-7299</a></li>
+        <li><p class="text-sm text-gray-500">Instagram</p><a href="https://instagram.com/leobringasatlife" target="_blank" rel="noopener noreferrer" class="text-black font-medium">@leobringasatlife</a></li>
+      </ul>
+      <form id="contactForm" action="https://formspree.io/f/TU_ID" method="POST" class="bg-gray-50 p-6 rounded-[2rem] border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-600">O dejame tu consulta acá:</p>
+        <input type="text" name="empresa_web" id="empresa_web" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="_subject" value="Nueva consulta — leobringasatlife.site" />
+        <input type="hidden" name="_next" value="https://leobringasatlife.site/gracias" />
+        <div>
+          <label for="nombre" class="sr-only">Tu nombre</label>
+          <input id="nombre" name="nombre" required minlength="2" autocomplete="name" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200" />
+        </div>
+        <div>
+          <label for="email" class="sr-only">Tu email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200" />
+        </div>
+        <div>
+          <label for="mensaje" class="sr-only">Tu mensaje</label>
+          <textarea id="mensaje" name="mensaje" required minlength="20" placeholder="Contame tu proyecto..." rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200"></textarea>
+        </div>
+        <button type="submit" class="pressable w-full px-4 py-3 bg-black text-white font-medium rounded-full">Enviar consulta</button>
+        <p id="formStatus" role="status" class="text-sm"></p>
+      </form>
+    </div>
+    <div class="md:col-span-3 bg-gray-50 p-8 rounded-[2rem] border border-gray-200">
+      <h3 class="font-semibold text-xl mb-6 text-black">Preguntas frecuentes</h3>
+      <div class="space-y-3">
+        {faqs.map((f, i) => (
+          <details class="border-b border-gray-200 pb-3" name="faq">
+            <summary class="py-3 font-semibold text-black cursor-pointer">{f.q}</summary>
+            <p class="pb-3 text-sm text-[#3B434E]">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity: faqs.map(f => ({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))})} />
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', async (e) => {
+    const honey = (document.getElementById('empresa_web') as HTMLInputElement)?.value;
+    if (honey) { e.preventDefault(); return; }
+    const status = document.getElementById('formStatus');
+    // Si usas Formspree real, deja el POST nativo comentando abajo. Validación liviana:
+    // e.preventDefault(); + fetch() con rate-limit simple en servidor.
+  });
+  document.querySelectorAll('[data-event="wa_click"]').forEach((a) => {
+    a.addEventListener('click', () => {
+      // @ts-ignore GA4 opcional
+      window.gtag?.('event', 'wa_click', { place: (a as HTMLElement).dataset.place });
+    });
+  });
+</script>

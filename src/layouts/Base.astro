@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+}
+
+const { title, description, path = '/' } = Astro.props;
+const site = 'https://leobringasatlife.site';
+const url = new URL(path, site).toString();
+const ogImage = `${site}/og-image.jpg`;
+const ogImageAlt = 'Leonardo Bringas — Diseño y desarrollo web en Argentina';
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Leonardo Bringas" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="geo.region" content="AR-B" />
+    <meta name="geo.placename" content="Buenos Aires" />
+    <link rel="canonical" href={url} />
+    <meta property="og:site_name" content="Leonardo Bringas — Desarrollo Web" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: 'Leonardo Bringas - Desarrollo Web',
+        description,
+        url: site,
+        logo: `${site}/icon-512.png`,
+        image: ogImage,
+        telephone: '+54-9-11-2541-7299',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Buenos Aires',
+          addressCountry: 'AR',
+        },
+        sameAs: ['https://instagram.com/leobringasatlife', 'https://github.com/LeoBringasAtLife'],
+        priceRange: '$150.000 - $1.700.000 ARS',
+        areaServed: [{ '@type': 'Country', name: 'Argentina' }, { '@type': 'City', name: 'Buenos Aires' }],
+        serviceType: ['Desarrollo Web', 'Landing Pages', 'Sitios Corporativos', 'E-commerce'],
+      })}
+    />
+  </head>
+  <body class="bg-white text-gray-800 antialiased">
+    <slot />
+  </body>
+</html>

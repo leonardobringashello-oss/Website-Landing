@@ -1,0 +1,72 @@
+---
+import { plans } from '../data/planes';
+---
+
+<section class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+  <div class="max-w-3xl">
+    <h1 class="text-4xl md:text-6xl font-bold text-black tracking-tight mb-6">
+      Diseño y desarrollo web para empresas y emprendedores en Argentina
+    </h1>
+    <p class="text-xl text-[#3B434E] mb-6 max-w-xl">
+      Sitios claros, rápidos y estratégicos, pensados para convertir visitas en consultas y ventas.
+    </p>
+    <a href="#planes" class="pressable inline-block px-6 py-3 text-white font-semibold bg-black rounded-[2rem]">
+      Ver planes y precios
+    </a>
+  </div>
+</section>
+
+<section class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-center">
+    <div><div class="text-4xl font-bold text-black">Desde 5 días</div><p class="mt-2 text-sm text-gray-600">plazos según el plan elegido</p></div>
+    <div><div class="text-4xl font-bold text-black">50/50</div><p class="mt-2 text-sm text-gray-600">Inicio y cierre del proyecto</p></div>
+    <div><div class="text-4xl font-bold text-black">100%</div><p class="mt-2 text-sm text-gray-600">Responsive y SEO-ready</p></div>
+  </div>
+</section>
+
+<section id="planes" class="bg-white py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl text-black font-bold mb-4 text-center">Planes sencillos. Precios claros.</h2>
+    <p class="text-[#3B434E] mb-12 text-center max-w-2xl mx-auto">Elegí el que mejor se adapte a tu negocio.</p>
+    <div class="grid md:grid-cols-3 gap-6 items-stretch">
+      {
+        plans.map((p) => (
+          <article class="bg-white border border-gray-200 p-8 rounded-[2rem] flex flex-col h-full relative">
+            {p.featured && (
+              <span class="absolute -top-3 left-8 bg-black text-white text-xs px-3 py-1 rounded-full font-medium">
+                Recomendado
+              </span>
+            )}
+            <h3 class="text-xl font-bold text-black">{p.name}</h3>
+            <p class="text-sm text-gray-500 mt-1 mb-6">{p.tagline}</p>
+            <div class="text-4xl font-bold text-black">{p.priceShort}</div>
+            <p class="text-xs text-gray-500 mt-1 mb-6">{p.priceFull} · {p.priceNote}</p>
+            <a
+              href={p.cta}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="wa_click"
+              data-place={`plan-${p.id}`}
+              class:list={[
+                'pressable block w-full text-center px-4 py-3 font-medium rounded-full transition-all mb-8',
+                p.featured ? 'bg-black text-white' : 'bg-gray-100 text-black',
+              ]}
+              aria-label={`Consultar plan ${p.name} por WhatsApp`}
+            >
+              Consultar plan
+            </a>
+            <ul class="space-y-3 text-sm text-[#3B434E] flex-grow border-t border-gray-100 pt-6">
+              {p.features.map((f) => (
+                <li class="flex items-start gap-2">✓ {f}</li>
+              ))}
+              <li>▶ Entrega estimada: <strong>{p.eta}</strong></li>
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+    <p class="text-center text-sm text-gray-500 mt-12">
+      ¿Necesitás un plan a medida? <a href="#contacto" class="underline underline-offset-4 text-black font-medium">Consultame</a>
+    </p>
+  </div>
+</section>

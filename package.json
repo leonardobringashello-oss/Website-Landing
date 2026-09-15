@@ -1,28 +1,20 @@
 {
-  "name": "website-landing",
+  "name": "website-landing-astro",
   "version": "1.0.0",
-  "description": "Plataforma de servicios de desarrollo web de Leonardo Bringas",
-  "main": "assets/javascript/main.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "build:css": "tailwindcss -i ./assets/css/global.css -o ./assets/css/tailwind.min.css --minify",
-    "watch:css": "tailwindcss -i ./assets/css/global.css -o ./assets/css/tailwind.min.css --watch"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@astrojs/sitemap": "^3.2.1"
   },
   "devDependencies": {
-    "express": "^5.2.1",
-    "livereload": "^0.10.3",
-    "tailwindcss": "^3.4.19"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LeoBringasAtLife/Website-Landing.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/LeoBringasAtLife/Website-Landing/issues"
-  },
-  "homepage": "https://github.com/LeoBringasAtLife/Website-Landing#readme"
+    "@tailwindcss/vite": "^4.1.12",
+    "tailwindcss": "^4.1.12",
+    "sharp": "^0.34.3"
+  }
 }
